@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <link rel="icon" href="../static/images/icon.png" type="image/gif" sizes="16x16"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <scrpit src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+        <title>To Do List New</title>
+        {% load static %}
+</head>
+<style>
+    .container{
+    margin-top: 100px;
+}
+.inprogress{
+    position: relative;
+    margin-left: 20px;
+}
+.doneButn{
+    position: absolute;
+}
+.form-control{
+    width: 175px;
+    height: 25px;
+}
+
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+
+</style>
+
+<body ng-app="toDo" ng-controller="toDoController">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">To DO List</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <!-- </div> -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+        <script src="{% static 'js/todo.js' %}"> </script>
+        <form ng-submit="todoAdd()" class="form-inline">
+            <h3> <B> Add Task </B> </h3> <br>
+            <label for="exptas">Task : </label>
+            <input type="text" ng-model="todoInput" placeholder="Add a new to do" required> <br><br>
+            <label for="expd">Expected Date : </label>
+            <input type="date" ng-model='checkOut' required>
+            <br> <br>
+            <button type="submit" ng-click="saveData()" class="btn btn-info">Submit</button>
+        </form>
+        <!-- </div> -->
+        <!-- <div class="inprogress"> -->
+        <h3> <B> Inprogress </B></h3>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Mark</th>
+                    <th>Task</th>
+                    <th>Add Date</th>
+                    <th>Expected Date</th>
+                </tr>
+            </thead>
+            <tbody id="myTable">
+                <tr>
+                    <td>
+                        <div ng-repeat="todo in todoList">
+                            <input type="checkbox" ng-model="todo.done">
+                        </div>
+                    </td>
+                    <td>
+                        <div ng-repeat="todo in todoList">
+                            <span ng-bind="todo.todoText"></span>
+                        </div>
+                    </td>
+                    <td>
+                        <div ng-repeat="todo in todoList">
+                            <span ng-bind="todo.cuDate"></span>
+                        </div>
+                    </td>
+                    <td>
+                        <div ng-repeat="todo in todoList">
+                            <span ng-bind="todo.expDate"></span></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- </div> -->
+        <div class="doneButn" style="width:50%">
+            <button ng-click="remove()" class="btn btn-success">Done</button>
+        </div>
+        <br><br>
+        <h3><b>Done Task</b></h3>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Task</th>
+                    <th>Add Date</th>
+                    <th>Expected Date</th>
+                </tr>
+            </thead>
+            <tbody id="myTable">
+                <tr>
+                    <td>
+                        <!-- add this -->
+                    </td>
+                    <td>
+                        <!-- add this -->
+                    </td>
+                    <td>
+                        <!-- add this -->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <hr>
+</body>
+
+</html>
